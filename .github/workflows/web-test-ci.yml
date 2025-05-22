@@ -1,0 +1,58 @@
+name: Sauce demo Automation CI
+on:
+  workflow_call:
+    inputs:
+      browser-name:
+        required: true
+        default: chrome
+        type: string
+
+      test-directory:
+        required: true
+        type: string
+
+      html-report-name:
+        required: true
+        type: string
+
+      report-prefix:
+        required: true
+        type: string
+
+
+jobs:
+  run-pytest-ci:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+      - name: Step python
+        uses: actions/setup-python@v4
+        with:
+              python-version: '3.12'
+
+      - name: Cache pip packages
+        uses: actions/cache@v4
+        with:
+          path: |
+                ~/.cache/pip
+                ~/.wdm
+          key: ${{ runner.os }}-pip-wdm-${{ hashFiles('**/requirements.txt') }}
+          restore-keys:  ${{ runner.os }}-pip-wdm-
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests CI
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+        run: pytest  ${{inputs.test-directory}} --capture=no --no-header -q -rA --headless --browser=${{inputs.browser-name}} --html=${{inputs.report-prefix}}/${{inputs.browser-name}}/${{inputs.html-report-name}}.html --self-contained-html --log-cli-level=info
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{inputs.html-report-name}}
+          path: ${{inputs.report-prefix}}/${{inputs.browser-name}}/

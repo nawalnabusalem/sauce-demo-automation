@@ -1,0 +1,30 @@
+name: Login Test Suite
+on: workflow_call
+
+jobs:
+  login-chrome-tests:
+    name: Login Tests (Chrome)
+    uses: ./.github/workflows/web-test-ci.yml
+    with:
+      browser-name: chrome
+      test-directory: 'tests/login'
+      report-prefix: 'reports/TestLogin'
+      html-report-name: 'login-chrome-report'
+
+  login-edge-tests:
+    name: Login Tests (Edge)
+    uses: ./.github/workflows/web-test-ci.yml
+    with:
+      browser-name: edge
+      test-directory: 'tests/login'
+      report-prefix: 'reports/TestLogin'
+      html-report-name: 'login-edge-report'
+
+  login-firefox-tests:
+    name: Login Tests (Firefox)
+    uses: ./.github/workflows/web-test-ci.yml
+    with:
+      browser-name: firefox
+      test-directory: 'tests/login'
+      report-prefix: 'reports/TestLogin'
+      html-report-name: 'login-firefox-report'

@@ -1,0 +1,30 @@
+name: Main Inventory Test Suite
+on: workflow_call
+
+jobs:
+  inventory-chrome-tests:
+    name: Main Inventory Tests (Chrome)
+    uses: ./.github/workflows/web-test-ci.yml
+    with:
+      browser-name: chrome
+      test-directory: 'tests/inventory'
+      report-prefix: 'reports/TestMainInventory'
+      html-report-name: 'inventory-chrome-report'
+
+  inventory-edge-tests:
+    name: Main Inventory Tests (Edge)
+    uses: ./.github/workflows/web-test-ci.yml
+    with:
+      browser-name: edge
+      test-directory: 'tests/inventory'
+      report-prefix: 'reports/TestMainInventory'
+      html-report-name: 'inventory-edge-report'
+
+  inventory-firefox-tests:
+    name: Main Inventory Tests (Firefox)
+    uses: ./.github/workflows/web-test-ci.yml
+    with:
+      browser-name: firefox
+      test-directory: 'tests/inventory'
+      report-prefix: 'reports/TestMainInventory'
+      html-report-name: 'inventory-firefox-report'

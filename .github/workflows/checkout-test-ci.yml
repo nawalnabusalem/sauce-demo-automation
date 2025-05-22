@@ -1,0 +1,30 @@
+name: Checkout Test Suite
+on: workflow_call
+
+jobs:
+  checkout-chrome-tests:
+    name: Checkout Tests (Chrome)
+    uses: ./.github/workflows/web-test-ci.yml
+    with:
+      browser-name: chrome
+      test-directory: 'tests/checkout'
+      report-prefix: 'reports/TestCheckout'
+      html-report-name: 'checkout-chrome-report'
+
+  checkout-edge-tests:
+    name: Checkout Tests (Edge)
+    uses: ./.github/workflows/web-test-ci.yml
+    with:
+      browser-name: edge
+      test-directory: 'tests/checkout'
+      report-prefix: 'reports/TestCheckout'
+      html-report-name: 'checkout-edge-report'
+
+  checkout-firefox-tests:
+    name: Checkout Tests (Firefox)
+    uses: ./.github/workflows/web-test-ci.yml
+    with:
+      browser-name: firefox
+      test-directory: 'tests/checkout'
+      report-prefix: 'reports/TestCheckout'
+      html-report-name: 'checkout-firefox-report'

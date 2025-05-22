@@ -1,0 +1,19 @@
+name: Sauce Demo Main CI
+on: [push]
+
+jobs:
+  login-ci:
+    name: Login Tests CI
+    uses: ./.github/workflows/login-test-ci.yml
+
+  cart-ci:
+    name: Cart Tests CI
+    uses: ./.github/workflows/cart-test-ci.yml
+
+  main-inventory-ci:
+    name: Main Inventory Tests CI
+    uses: ./.github/workflows/inventory-test-ci.yml
+
+  checkout-ci:
+    name: Checkout Tests CI
+    uses: ./.github/workflows/checkout-test-ci.yml
