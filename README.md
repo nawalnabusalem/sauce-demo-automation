@@ -30,16 +30,16 @@ sauce-demo-automation/
 
 ## 🚀 Features
 
-- **Selenium WebDriver** for browser automation  
-- **Pytest** as the testing framework  
-- **Page Object Model (POM)** for maintainability  
-- **GitHub Actions CI** for running tests on push/pull  
+- **Selenium WebDriver** for browser automation.  
+- **Pytest** as the testing framework.  
+- **Page Object Model (POM)** for maintainability.  
+- **GitHub Actions CI** for running tests on push/pull.  
 - **Custom Logger** with:
-  - Colored console output
-  - HTML logging for debugging
+  - Colored console output.
+  - HTML logging for debugging.
 - **Test Helper** utilities:
-  - Simplified assertions
-  - Reusable test logic
+  - Simplified assertions.
+  - Reusable test logic.
 
 
 ## ⚙️ Running the Tests
